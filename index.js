@@ -3,6 +3,11 @@ import sharp from 'sharp';
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.set('Content-Type', 'text/html; charset=utf-8');
+	res.send('<h1>TESTRY</h1>');
+});
+
 app.get('/image', (req, res) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
 	res.send('<h1>Hello from SHARP IMG</h1>');
