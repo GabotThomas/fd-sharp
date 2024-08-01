@@ -3,9 +3,11 @@ import sharp from 'sharp';
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
-	res.send('<h1>TESTRY</h1>');
+	res.send('<h1>TESTY</h1>');
 });
 
 app.get('/image', (req, res) => {
