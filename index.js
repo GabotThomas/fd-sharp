@@ -3,11 +3,12 @@ import sharp from 'sharp';
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+app.get('/image', (req, res) => {
+    res.set('Content-Type', 'text/html; charset=utf-8');
+	res.send('<h1>Hello from SHARP IMG</h1>');
 });
 
-app.post('/sharp', express.json({ limit: '20mb' }), async (req, res) => {
+app.post('/image/sharp', express.json({ limit: '20mb' }), async (req, res) => {
     if (!req.body) {
         return res.status(400).send('No image are sended.');
     }
@@ -35,7 +36,7 @@ app.post('/sharp', express.json({ limit: '20mb' }), async (req, res) => {
     }
   });
 
-app.post('/sharp/:size', express.json({  limit: '20mb' }), async (req, res) => {
+app.post('/image/sharp/:size', express.json({  limit: '20mb' }), async (req, res) => {
 
     const size = parseInt(req.params.size);
     
@@ -65,7 +66,4 @@ app.post('/sharp/:size', express.json({  limit: '20mb' }), async (req, res) => {
     }
   });
 
-const PORT = 3005;
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
-});
+app.listen(3000);
