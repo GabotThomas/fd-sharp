@@ -13,11 +13,11 @@ app.get('/', (req, res) => {
     res.send('<h1>Bienvenue sur sharp</h1>');
 });
 
-app.get('/info', (req, res) => {
-   const buffer =  Buffer.from(IMG,'base64');
-    res.set('Content-Type', 'text/html; charset=utf-8');
-    res.send(JSON.stringify({buffer}));
-});
+// app.get('/info', (req, res) => {
+//    const buffer =  Buffer.from(IMG,'base64');
+//     res.set('Content-Type', 'text/html; charset=utf-8');
+//     res.send(JSON.stringify({buffer}));
+// });
 
 app.post('/metadata', express.json({ limit: '20mb' }), async (req, res) => {
     if (!req.body) {
