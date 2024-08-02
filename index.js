@@ -2,7 +2,7 @@
 const express = require('express');
 const sharp = require('sharp');
 
-const {IMG} = require('./image');
+// const {IMG} = require('./image');
 
 const app = express();
 
