@@ -2,9 +2,11 @@
 const express = require('express');
 const sharp = require('sharp');
 
+const {IMG} = require('./image');
+
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit: '20mb'}));
 
 app.get('/', (req, res) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
@@ -12,8 +14,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/info', (req, res) => {
+   const buffer =  Buffer.from(IMG,'base64');
     res.set('Content-Type', 'text/html; charset=utf-8');
-    res.send('<h1>Bienvenue sur sharp</h1>');
+    res.send(JSON.stringify({buffer}));
 });
 
 app.post('/metadata', express.json({ limit: '20mb' }), async (req, res) => {
@@ -40,6 +43,7 @@ app.post('/metadata', express.json({ limit: '20mb' }), async (req, res) => {
         
         res.send(JSON.stringify(metadata));
     } catch (error) {
+      console.log(error)
       res.status(500).send('Error processing the image.');
     }
   });
