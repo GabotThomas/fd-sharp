@@ -6,14 +6,27 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('', (req, res) => {
     res.set('Content-Type', 'text/html; charset=utf-8');
-	res.send('<h1>TESTY</h1>');
+    res.send('<h1>TEST 1</h1>');
 });
 
+
+app.get('/', (req, res) => {
+        res.set('Content-Type', 'text/html; charset=utf-8');
+	    res.send('<h1>TEST 2</h1>');
+});
+
+
 app.get('/image', (req, res) => {
-    res.set('Content-Type', 'text/html; charset=utf-8');
-	res.send('<h1>Hello from SHARP IMG</h1>');
+        res.set('Content-Type', 'text/html; charset=utf-8');
+	    res.send('<h1>Hello from SHARP IMG</h1>');
+});
+
+app.get('/images', (req, res) => {
+    // return test json
+    res.set('Content-Type', 'application/json');
+    res.send(JSON.stringify({message: "Hello from SHARP IMG"}));
 });
 
 // app.post('/image/sharp', express.json({ limit: '20mb' }), async (req, res) => {
